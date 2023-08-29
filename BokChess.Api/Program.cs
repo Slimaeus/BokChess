@@ -30,8 +30,6 @@ builder.Services.AddMassTransit(config =>
     config.AddSagas(assembly);
     config.AddActivities(assembly);
 
-    //amqps://hfzbnoni:03X2irdDUlSBV7D4SoQ4NFNZZ2YglnEh@octopus.rmq3.cloudamqp.com/hfzbnoni
-
     //config.UsingInMemory((context, config) =>
     //{
     //    config.ConfigureEndpoints(context);
