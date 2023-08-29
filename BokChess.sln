@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BokChess.Api", "BokChess.Api\BokChess.Api.csproj", "{F6096AF9-B303-45CA-A85E-FC3BD2D5FB89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6096AF9-B303-45CA-A85E-FC3BD2D5FB89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6096AF9-B303-45CA-A85E-FC3BD2D5FB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6096AF9-B303-45CA-A85E-FC3BD2D5FB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6096AF9-B303-45CA-A85E-FC3BD2D5FB89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BEAC962E-5648-447B-BF44-3356DE3B2A76}
+	EndGlobalSection
+EndGlobal
