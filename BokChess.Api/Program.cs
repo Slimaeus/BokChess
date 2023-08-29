@@ -1,5 +1,7 @@
 using BokChess.Api.Publisher;
 using BokChess.Api.Settings;
+using Hangfire;
+using Hangfire.MemoryStorage;
 using MassTransit;
 using Microsoft.Extensions.Options;
 using System.Reflection;
@@ -13,7 +15,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddHostedService<PingPublisher>();
 builder.Services.AddHostedService<WeatherPublisher>();
 
 builder.Services.Configure<RabbitMQSettings>(builder.Configuration.GetSection(nameof(RabbitMQSettings)));
@@ -50,6 +51,17 @@ builder.Services.AddMassTransit(config =>
     });
 });
 
+builder.Services.AddHangfire(config => config
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseDefaultTypeSerializer()
+    .UseMemoryStorage());
+
+builder.Services.AddHangfireServer(options =>
+{
+    options.SchedulePollingInterval = TimeSpan.FromSeconds(1);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -64,5 +76,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseHangfireDashboard();
+
+RecurringJob.AddOrUpdate<WeatherPublisher>("weather", publisher => publisher.PublishWeatherEvent(), Cron.Minutely);
 
 app.Run();
