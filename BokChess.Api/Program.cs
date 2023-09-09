@@ -77,6 +77,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("hello", () => Results.Ok("Hello"));
+
 app.UseHangfireDashboard();
 
 RecurringJob.AddOrUpdate<WeatherPublisher>("weather", publisher => publisher.PublishWeatherEvent(), Cron.Minutely);
